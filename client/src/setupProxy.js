@@ -1,8 +1,12 @@
-const { createProxyMiddleware } = require("http-proxy-middleware");
+// src/setupProxy.js
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
   app.use(
-    "/api",
-    createProxyMiddleware({ target:process.env.REACT_APP_PROXY_URL, changeOrigin: true })
+    '/api', // This matches any request starting with /api
+    createProxyMiddleware({
+      target: 'https://webdesk.onrender.com', // Replace with your backend API
+      changeOrigin: true,
+    })
   );
 };

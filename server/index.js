@@ -29,6 +29,7 @@ mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    dbName: "webdesk"
     // useCreateIndex: true,
   })
   .then(() => console.log("DB connected"))

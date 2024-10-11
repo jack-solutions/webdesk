@@ -16,12 +16,13 @@ import {
   updateTaskStart,
   updateTaskSuccess,
 } from "./TasksActions";
+import axiosInstance from "../../config/instance";
 
 export const getAllTasks = async (user, dispatch) => {
   dispatch(getAllTasksStart());
 
   try {
-    const res = await axios.get("/api/task/all", {
+    const res = await axiosInstance.get("/api/task/all", {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -38,7 +39,7 @@ export const getRecentTasks = async (user, dispatch) => {
   dispatch(getRecentTasksStart());
 
   try {
-    const res = await axios.get("/api/task/recent", {
+    const res = await axiosInstance.get("/api/task/recent", {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -55,7 +56,7 @@ export const createNewTask = async (task, user, dispatch) => {
   dispatch(createNewTaskStart());
 
   try {
-    const res = await axios.post("/api/task", task, {
+    const res = await axiosInstance.post("/api/task", task, {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -72,7 +73,7 @@ export const updateTask = async (task, user, dispatch) => {
   dispatch(updateTaskStart());
 
   try {
-    const res = await axios.put(`/api/task/${task._id}`, task, {
+    const res = await axiosInstance.put(`/api/task/${task._id}`, task, {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -90,7 +91,7 @@ export const deleteTask = async (taskId, user, dispatch) => {
   dispatch(deleteTaskStart());
 
   try {
-    const res = await axios.delete(`/api/task/${taskId}`, {
+    const res = await axiosInstance.delete(`/api/task/${taskId}`, {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -107,7 +108,7 @@ export const createCommentInTask = async (comment, user, dispatch) => {
   dispatch(updateTaskStart());
 
   try {
-    const res = await axios.post("/api/task/comment", comment, {
+    const res = await axiosInstance.post("/api/task/comment", comment, {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -125,7 +126,7 @@ export const updateCommentInTask = async (comment, user, dispatch) => {
   dispatch(updateTaskStart());
 
   try {
-    const res = await axios.put(`/api/task/comment/${comment.commentId}`, comment, {
+    const res = await axiosInstance.put(`/api/task/comment/${comment.commentId}`, comment, {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -143,7 +144,7 @@ export const deleteCommentInTask = async (comment, user, dispatch) => {
   dispatch(updateTaskStart());
 
   try {
-    const res = await axios.put(
+    const res = await axiosInstance.put(
       `/api/task/deletecomment/${comment.commentId}`,
       comment,
       {

@@ -10,7 +10,7 @@ const Login = ({ setLoginUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { isFetching, dispatch } = useContext(AuthContext);
+  const { isFetching, dispatch, error } = useContext(AuthContext);
 
   const history = useHistory();
 
@@ -47,7 +47,11 @@ const Login = ({ setLoginUser }) => {
           ></input>
           <Lock className="icon" />
         </div>
-
+        {error && (
+          <p style={{ textAlign: "start", color: "red", fontSize: "13px" }}>
+            {error?.response?.data}
+          </p>
+        )}
         <button className="btn" onClick={handleLogin} disabled={isFetching}>
           Login
         </button>

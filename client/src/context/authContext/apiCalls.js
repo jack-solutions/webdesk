@@ -11,12 +11,13 @@ import {
   UpdateUserStart,
   UpdateUserSuccess,
 } from "./AuthActions";
+import axiosInstance from "../../config/instance";
 
 export const loginUser = async (user, dispatch) => {
   dispatch(loginStart());
 
   try {
-    const res = await axios.post("/api/auth/login", user);
+    const res = await axiosInstance.post("/api/auth/login", user);
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure(err));
@@ -27,7 +28,7 @@ export const registerUser = async (user, dispatch) => {
   dispatch(RegisterStart());
 
   try {
-    const res = await axios.post("/api/auth/register", user);
+    const res = await axiosInstance.post("http://localhost:5000/api/auth/register", user);
     dispatch(RegisterSuccess(res.data));
   } catch (err) {
     dispatch(RegisterFailure(err));
@@ -38,7 +39,7 @@ export const updateUser = async (user, userInfo, dispatch) => {
   dispatch(UpdateUserStart());
 
   try {
-    const res = await axios.put(`/api/user/${user._id}`, userInfo, {
+    const res = await axiosInstance.put(`/api/user/${user._id}`, userInfo, {
       headers: {
         token: "Bearer " + user.accessToken,
       },

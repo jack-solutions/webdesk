@@ -5,7 +5,7 @@ module.exports = function (app) {
   app.use(
     '/api', // This matches any request starting with /api
     createProxyMiddleware({
-      target: 'https://webdesk.onrender.com', // Replace with your backend API
+      target: 'http://localhost:5000', // Replace with your backend API
       changeOrigin: true,
     })
   );

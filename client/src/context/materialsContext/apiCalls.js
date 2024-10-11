@@ -16,12 +16,13 @@ import {
   updateMaterialStart,
   updateMaterialSuccess,
 } from "./MaterialsActions";
+import axiosInstance from "../../config/instance";
 
 export const getAllMaterials = async (user, dispatch) => {
   dispatch(getAllMaterialsStart());
 
   try {
-    const res = await axios.get("/api/material/all", {
+    const res = await axiosInstance.get("/api/material/all", {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -38,7 +39,7 @@ export const getRecentMaterials = async (user, dispatch) => {
   dispatch(getRecentMaterialsStart());
 
   try {
-    const res = await axios.get("/api/material/recent", {
+    const res = await axiosInstance.get("/api/material/recent", {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -55,7 +56,7 @@ export const createNewMaterial = async (material, user, dispatch) => {
   dispatch(createNewMaterialStart());
 
   try {
-    const res = await axios.post("/api/material", material, {
+    const res = await axiosInstance.post("/api/material", material, {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -72,7 +73,7 @@ export const updateMaterial = async (material, user, dispatch) => {
   dispatch(updateMaterialStart());
 
   try {
-    const res = await axios.put(`/api/material/${material._id}`, material, {
+    const res = await axiosInstance.put(`/api/material/${material._id}`, material, {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -92,7 +93,7 @@ export const deleteMaterial = async (materialId, user, dispatch) => {
   dispatch(deleteMaterialStart());
 
   try {
-    const res = await axios.delete(`/api/material/${materialId}`, {
+    const res = await axiosInstance.delete(`/api/material/${materialId}`, {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -109,7 +110,7 @@ export const createCommentInMaterial = async (comment, user, dispatch) => {
   dispatch(updateMaterialStart());
 
   try {
-    const res = await axios.post("/api/material/comment", comment, {
+    const res = await axiosInstance.post("/api/material/comment", comment, {
       headers: {
         token: "Bearer " + user.accessToken,
       },
@@ -129,7 +130,7 @@ export const updateCommentInMaterial = async (comment, user, dispatch) => {
   dispatch(updateMaterialStart());
 
   try {
-    const res = await axios.put(
+    const res = await axiosInstance.put(
       `/api/material/comment/${comment.commentId}`,
       comment,
       {
@@ -153,7 +154,7 @@ export const deleteCommentInMaterial = async (comment, user, dispatch) => {
   dispatch(updateMaterialStart());
 
   try {
-    const res = await axios.put(
+    const res = await axiosInstance.put(
       `/api/material/deletecomment/${comment.commentId}`,
       comment,
       {

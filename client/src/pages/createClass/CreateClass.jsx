@@ -38,8 +38,8 @@ const CreateClass = () => {
   const handleCreateMeeting = (e) => {
     const newClassId = uuid();
     console.log(newClassId);
-    history.push(`/class/${newClassId}`)
-  }
+    history.push(`/class/${newClassId}`);
+  };
 
   return (
     <div>

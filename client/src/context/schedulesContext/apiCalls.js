@@ -4,12 +4,13 @@ import {
   getSchedulesStart,
   getSchedulesSuccess,
 } from "./SchedulesActions";
+import axiosInstance from "../../config/instance";
 
 export const getSchedules = async (user, dispatch) => {
   dispatch(getSchedulesStart());
 
   try {
-    const res = await axios.get("/api/schedule/all?course=BCA", {
+    const res = await axiosInstance.get("/api/schedule/all?course=BCA", {
       headers: {
         token: "Bearer " + user.accessToken,
       },

@@ -28,7 +28,7 @@ export const registerUser = async (user, dispatch) => {
   dispatch(RegisterStart());
 
   try {
-    const res = await axiosInstance.post("http://localhost:5000/api/auth/register", user);
+    const res = await axiosInstance.post("/api/auth/register", user);
     dispatch(RegisterSuccess(res.data));
   } catch (err) {
     dispatch(RegisterFailure(err));

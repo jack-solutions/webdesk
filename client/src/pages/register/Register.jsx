@@ -37,66 +37,78 @@ const Register = () => {
     <div className="register">
       <div className="register-page">
         <h1>Register</h1>
-        <div className="register-input">
-          <input
-            type="text"
-            name="fullname"
-            value={fullname}
-            placeholder="Your full name"
-            onChange={(e) => setFullname(e.target.value)}
-          ></input>
-          <Person className="icon" />
-        </div>
-        <div className="register-input">
-          <input
-            type="text"
-            name="course"
-            value={course}
-            placeholder="Your course"
-            onChange={(e) => setCourse(e.target.value)}
-          ></input>
-          <SchoolRounded className="icon" />
-        </div>
-        <div className="register-input">
-          <input
-            type="text"
-            name="semester"
-            value={semester}
-            placeholder="Your semester"
-            onChange={(e) => setSemester(e.target.value)}
-          ></input>
-          <MenuBookRounded className="icon" />
-        </div>
-        <div className="register-input">
-          <input
-            type="text"
-            name="email"
-            value={email}
-            placeholder="Your email"
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-          <Email className="icon" />
-        </div>
-        <div className="register-input">
-          <input
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Enter password"
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-          <Lock className="icon" />
-        </div>
-        <div className="register-input">
-          <input
-            type="password"
-            name="confirmPassword"
-            value={confirmPass}
-            placeholder="Confirm password"
-            onChange={(e) => setConfirmPass(e.target.value)}
-          ></input>
-          <Lock className="icon" />
-        </div>
+        
+  <div className="register-input">
+    <input
+      type="text"
+      name="fullname"
+      value={fullname}
+      placeholder="Your full name"
+      onChange={(e) => setFullname(e.target.value)}
+    />
+    <Person className="icon" />
+  </div>
+
+  {/* Horizontal row for course and semester */}
+  <div className="input-row">
+    <div className="register-input">
+      <input
+        type="text"
+        name="course"
+        value={course}
+        placeholder="Your course"
+        onChange={(e) => setCourse(e.target.value)}
+      />
+      <SchoolRounded className="icon" />
+    </div>
+    
+    <div className="register-input">
+      <input
+        type="text"
+        name="semester"
+        value={semester}
+        placeholder="Your semester"
+        onChange={(e) => setSemester(e.target.value)}
+      />
+      <MenuBookRounded className="icon" />
+    </div>
+  </div>
+
+  <div className="register-input">
+    <input
+      type="text"
+      name="email"
+      value={email}
+      placeholder="Your email"
+      onChange={(e) => setEmail(e.target.value)}
+    />
+    <Email className="icon" />
+  </div>
+
+  {/* Horizontal row for passwords */}
+  <div className="input-row">
+    <div className="register-input">
+      <input
+        type="password"
+        name="password"
+        value={password}
+        placeholder="Enter password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <Lock className="icon" />
+    </div>
+    
+    <div className="register-input">
+      <input
+        type="password"
+        name="confirmPassword"
+        value={confirmPass}
+        placeholder="Confirm password"
+        onChange={(e) => setConfirmPass(e.target.value)}
+      />
+      <Lock className="icon" />
+    </div>
+  </div>
         {error && (
           <p style={{ color: "red", fontSize: "13px", textAlign: "start" }}>
             Somethign went wrong
